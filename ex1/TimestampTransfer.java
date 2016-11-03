@@ -16,20 +16,24 @@ import java.util.Scanner;
 public class TimestampTransfer {
 	@SuppressWarnings("resource")
 	public static void main(String[] args){
+		//system.in是一条管道
 		Scanner scanner = new Scanner(System.in);
+		//对时间进行解析，返回data
 		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//定义输出格式
 		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		//hasnext判断数据流输入是否为空
 		while (scanner.hasNext()){
-			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
+			String line = scanner.nextLine();//输入字符串储存到line中
+			Date lineDate = null;//初始化linedata
+			long lineTimestamp;//长整型变量lintimestamp
 			try {
 				lineDate = inputFormat.parse(line);
 				lineTimestamp = lineDate.getTime();
-				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);
+				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);//parse方法解析line 返回19701.1午时到输入日期的毫秒数
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.printStackTrace();//抛出异常
 			}
 		}
 	}
